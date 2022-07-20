@@ -126,10 +126,12 @@ let cityData = [{
 function citySort() {
 
     
-    sortByPopulation(cityData, "desc");
+   // sortByPopulation(cityData, "desc");
+
+    
     
     //extra credit functions
-    //sortyByName(cityData);
+    sortyByName(cityData, "desc");
     //sortByAge(cityData, "asc");
     
     //used for display purposes. not need to change
@@ -145,15 +147,52 @@ function citySort() {
 
 //takes an array of objects and sorts by population. 
 function sortByPopulation(cityData, sortDir) {
+
+    if (sortDir = "asc") {
+        cityData.sort((a, b) => {
+            return (a.population - b.population);
+        });
+    }
+    else {
+        cityData.sort((a, b) => {
+            return (b.population - a.population);
+        });
+    }
+    
     
 }
 
 //takes an array of objects and sorts by median age. 
-function sortByAge(cityData, sortDir){
-  
+function sortByAge(cityData, sortDir) {
+    if (sortDir = "asc") {
+        cityData.sort((a, b) => {
+            return (a.median_age - b.median_age);
+        });
+    } else {
+        cityData.sort((a, b) => {
+            return (b.median_age - a.median_age);
+        });
+        }
 }
 
 //takes an array of objects and sorts by city name. 
-function sortyByName(cityData) {
-    
-}
+function sortyByName(cityData, sortDir) {
+    cityData.sort((a, b) => {
+        let ca = a.city.toLowerCase();
+        let cb = b.city.toLowerCase();
+
+        let compare = 0;
+        if (ca > cb) {
+            compare = 1;
+        } else if
+            (ca < cb) {
+            compare = -1;
+        }
+        // ascending order(A-Z)
+        if (sortDir == "asc") {
+            return compare;
+        } else {
+            return compare * -1;
+        }
+        });
+    }
